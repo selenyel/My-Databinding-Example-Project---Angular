@@ -20,19 +20,19 @@ export class CockpitComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onAddServer(nameInput: HTMLInputElement, contentInput: HTMLInputElement) {
+  onAddServer(nameInput: HTMLInputElement, contentInput: HTMLInputElement ) {
     console.log(nameInput);
     console.log(nameInput.value);
     console.log(this.serverContentInput);
-    //We understand that this is an ElementRef property 
+    // ^ We understand that this is an ElementRef property
     this.serverCreated.emit({
       serverName: nameInput.value, 
-      // serverContent: contentInput.value
-      serverContent: this.serverContentInput.nativeElement.value
+      serverContent: contentInput.value
+      // serverContent: this.serverContentInput.nativeElement.value
     });
   }
 
-  onAddBlueprint(nameInput: HTMLInputElement , contentInput: HTMLInputElement) { // converted 2 way binding to passing local references from html to ts
+  onAddBlueprint(nameInput: HTMLInputElement , /* contentInput: HTMLInputElement */) { // converted 2 way binding to passing local references from html to ts
     this.blueprintCreated.emit({
       blueprintName: nameInput.value,
       // blueprintContent: contentInput.value
