@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -6,27 +6,42 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-  newServerName = '';
-  newServerContent = '';
+  // newServerName = '';
+  // newServerContent = '';
 
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent:string}>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{blueprintName: string, blueprintContent:string}>();
+
+
+  @ViewChild('serverContentInput') serverContentInput: ElementRef; // converting 2 way binding to fetching local references with ViewChild
+  // @ViewChild(CockpitComponent) contentInput;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  onAddServer() {
+  onAddServer(nameInput: HTMLInputElement, contentInput: HTMLInputElement) {
+    console.log(nameInput);
+    console.log(nameInput.value);
+    console.log(this.serverContentInput);
+    //We understand that this is an ElementRef property 
     this.serverCreated.emit({
-      serverName: this.newServerName, 
-      serverContent: this.newServerContent
+      serverName: nameInput.value, 
+      // serverContent: contentInput.value
+      serverContent: this.serverContentInput.nativeElement.value
     });
   }
 
-  onAddBlueprint() {
+  onAddBlueprint(nameInput: HTMLInputElement , contentInput: HTMLInputElement) { // converted 2 way binding to passing local references from html to ts
     this.blueprintCreated.emit({
-      blueprintName: this.newServerName, 
-      blueprintContent: this.newServerContent
+      blueprintName: nameInput.value,
+      // blueprintContent: contentInput.value
+      blueprintContent:  this.serverContentInput.nativeElement.value
     });
   }
 }
+
+
+// Local references passed to methods or local references fetched through View Child
+// But dont assign value to the this.serverContentInput.nativeElement.value it would work but don't mess with the DOM like this.
+// There are better tools and methods for that.
