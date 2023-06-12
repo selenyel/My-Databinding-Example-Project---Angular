@@ -1,5 +1,6 @@
 <div class="panel panel-default">
-    <div class="panel-heading">{{ element.name }}</div>
+    <div class="panel-heading" style="display: flex; justify-content: space-between;"  *ngIf="index === 0">  {{ element.name }} <p>(name comes from element)</p></div> 
+    <div class="panel-heading" style="display: flex; justify-content: space-between;" #heading> {{ name }} <p *ngIf="index === 0">(name comes from element name)</p></div>
     <div class="panel-body">
         <ng-content></ng-content>
     </div>

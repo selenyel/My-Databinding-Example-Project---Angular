@@ -5,3 +5,10 @@
 p {
   color: blue;
 }
+
+.__margin_bottom_one{
+  margin-bottom: 1em;
+}
+.__margin_left{
+  margin-left: 0.4em;
+}

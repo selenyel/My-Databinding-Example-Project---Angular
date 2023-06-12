@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -38,6 +38,9 @@ export class CockpitComponent implements OnInit {
       // blueprintContent: contentInput.value
       blueprintContent:  this.serverContentInput.nativeElement.value
     });
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges Called!', changes)
   }
 }
 

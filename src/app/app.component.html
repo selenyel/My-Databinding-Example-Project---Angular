@@ -8,11 +8,15 @@
   <hr>
   <div class="row">
     <div class="col-xs-12">
+      <button class="btn btn-primary __margin_bottom_one" (click)="onChangeFirst()">Change First Element</button>
+      <button class="btn btn-danger __margin_bottom_one __margin_left" (click)="onDestroyFirst()">Destroy First Element</button>
       <app-server-element 
-        *ngFor="let serverElement of serverElements"
+        *ngFor="let serverElement of serverElements, let i = index"
         [srvElement] = "serverElement"
+        [name] = 'serverElement.name'
+        [index] = 'i'
       >
-      <p>
+      <p #contentParagraph>
         <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
         <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
       </p>
