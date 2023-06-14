@@ -43,8 +43,9 @@ export class ServerElementComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges Called!', changes)
   }
+  // Executes multiple times
   // When component is 
-  // 1) When it first
+  // 1) Right at start / created
   // 2) When it Bound input property changes
   //    Such as @Input() @Output()
   //    Whenever these changes ngOnChanges also changes
@@ -54,7 +55,7 @@ export class ServerElementComponent implements OnInit, OnChanges {
   }
   // This will run whenever Change detection runs
   // Also whenever you click a button
-  // Or write 2 to the input field
+  // NOT WHEN YOU write 2 to the input field
   // Timer fired
   // An observable was resolved
 
